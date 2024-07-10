@@ -1,0 +1,22 @@
+def cifrado_cesar(texto, desplazamiento):
+    texto_encriptado = ''
+    for caracter in texto:
+        if caracter.isalpha():  # Verifica si es una letra
+            mayuscula = caracter.isupper()
+            caracter = caracter.lower()
+            codigo = ord(caracter) - ord('a')
+            codigo = (codigo + desplazamiento) % 26
+            caracter_nuevo = chr(codigo + ord('a'))
+            if mayuscula:
+                caracter_nuevo = caracter_nuevo.upper()
+            texto_encriptado += caracter_nuevo
+        else:
+            texto_encriptado += caracter
+    return texto_encriptado
+
+# Ejemplo de uso:
+texto_original = "Hola Mundo!"
+desplazamiento = 3
+texto_encriptado = cifrado_cesar(texto_original, desplazamiento)
+print("Texto original:", texto_original)
+print("Texto encriptado:", texto_encriptado)
